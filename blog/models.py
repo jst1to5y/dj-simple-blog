@@ -15,5 +15,5 @@ class Post(models.Model):
     images = models.ImageField(upload_to='img-post')
 
 
-def __str__(self):
-    return self.title
+    def __str__(self):
+        return self.title
