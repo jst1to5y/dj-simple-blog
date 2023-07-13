@@ -18,11 +18,12 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from blog.views import all_posts
+from blog.views import all_posts, single_post
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/', all_posts)
+    path('blog/', all_posts),
+    path('blog/<int:post_id>/', single_post),
 ]
 
 
