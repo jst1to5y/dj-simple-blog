@@ -11,4 +11,9 @@ class Post(models.Model):
     create_date = models.DateTimeField(default=timezone.now)
     draft = models.BooleanField(default=True)
     tags = TaggableManager()
-    auther = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='Post_User')
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='Post_User')
+    images = models.ImageField(upload_to='img-post')
+
+
+def __str__(self):
+    return self.title
