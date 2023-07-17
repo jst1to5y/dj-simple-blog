@@ -32,7 +32,20 @@ def new_post(request):
     return render(request, 'new_post.html', {'form': form})
 
 def edit_post(request, post_id):
-    pass
+    # Get data and use it inside form
+    data = Post.objects.get(id= post_id)
+    if request.method == 'POST':
+        # Fill data in fields
+        form = FormPost(request.POST, request.FILES, instance=data)
+        if form.is_valid():
+            myForm = form.save(commit= False)
+            myForm.author = request.user
+            myForm.save()
+            return redirect('/blog')
+    else:
+        form = FormPost(instance= data)
+
+    return render(request, 'edit_post.html', {'form': form})
 
 def delete_post(request, post_id):
     pass
