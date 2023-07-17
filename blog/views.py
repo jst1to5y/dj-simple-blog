@@ -48,6 +48,8 @@ def edit_post(request, post_id):
     return render(request, 'edit_post.html', {'form': form})
 
 def delete_post(request, post_id):
-    pass
+    data = Post.objects.get(id =post_id)
+    data.delete()
+    return redirect('/blog')
 
 
